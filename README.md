@@ -1,4 +1,4 @@
-# AI-Powered Discord FAQ Bot
+# IntelliQuery Bot
 
 This is a professional, deployment-ready Discord bot that provides intelligent answers to user questions. It uses a local FAQ file for instant, accurate responses and leverages Google's Gemini 1.5 Flash model for questions it doesn't know, ensuring no query goes unanswered. The entire application is containerized with Docker, making it easy to deploy and run 24/7.
 
@@ -29,8 +29,8 @@ This is a professional, deployment-ready Discord bot that provides intelligent a
 
 **2. Clone the Repository:**
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/himanshu-sharma-dev1/-IntelliQuery-Bot.git
+cd -IntelliQuery-Bot
 ```
 
 **3. Configure Your Secrets:**
