@@ -1,0 +1,10 @@
+# Testing Framework
+pytest
+pytest-asyncio
+
+# Discord.py Testing Utilities
+# (We will add a library here later if needed)
+
+# For mocking API calls
+aiohttp
+async-timeout
