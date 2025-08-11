@@ -18,3 +18,10 @@ def parse_faq(file_path):
 
     return questions_answers
 
+def write_faq(faq_data: dict, file_path: str):
+    """Writes the FAQ data to the FAQ.md file, overwriting it."""
+    with open(file_path, 'w', encoding='utf-8') as f:
+        # Sort by question to maintain a consistent order
+        for question, answer in sorted(faq_data.items()):
+            f.write(f"## {question}\n")
+            f.write(f"{answer}\n\n")

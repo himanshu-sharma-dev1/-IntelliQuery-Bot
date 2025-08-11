@@ -27,6 +27,32 @@ class FaqCog(commands.Cog):
         else:
             await interaction.response.send_message("I don't have any questions in my FAQ at the moment.", ephemeral=True)
 
+    @app_commands.command(name="search", description="Searches for a keyword in the FAQ questions.")
+    @app_commands.describe(keyword="The keyword to search for.")
+    async def search_questions(self, interaction: discord.Interaction, keyword: str):
+        """Searches for a keyword in the FAQ questions."""
+        keyword = keyword.lower()
+        # Find all questions that contain the keyword
+        matching_questions = [q for q in self.faq.keys() if keyword in q.lower()]
+
+        if matching_questions:
+            # Format the list of questions
+            question_list = "\n".join(sorted(matching_questions))
+            embed = discord.Embed(
+                title=f"Questions containing '{keyword}'",
+                description=f"```\n{question_list}\n```",
+                color=discord.Color.blue()
+            )
+            embed.set_footer(text=f"Found {len(matching_questions)} matching question(s).")
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        else:
+            embed = discord.Embed(
+                title="No Matches Found",
+                description=f"I couldn't find any questions containing the keyword: `{keyword}`",
+                color=discord.Color.orange()
+            )
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+
     @app_commands.command(name="ask", description="Answers a question from the FAQ or uses AI as a fallback.")
     @app_commands.describe(question="The question you want to ask.")
     async def ask_question(self, interaction: discord.Interaction, question: str):
